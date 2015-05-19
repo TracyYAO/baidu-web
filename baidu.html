@@ -1,0 +1,132 @@
+<html lang="zh-CN">
+    <head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+		<meta name="description" content="百度一下 你就知道">
+		<meta name="keywords" content="百度一下 你就知道">
+		<title>百度搜索框</title>
+		<style>
+            body, input, ul, li{
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				font: 12px arial;
+			}
+			input {
+				outline: none;
+				border: none;
+			}
+
+			.search {
+			    width: 640px;
+			    margin: 0 auto;
+
+			}
+
+			.search-logo {
+				margin-bottom: 30px;
+				text-align: center;
+			}
+			/*整个搜索框*/
+			.searchBar {
+				width: 640px;
+				height: 38px;
+			}
+			/*搜索文本*/
+			.searchTxt {
+				float: left;
+				border: 1px solid #3385ff;
+				width: 540px;
+				height: 36px;
+			}
+			.searchTxt input{
+				padding-left: 5px;
+				width: 540px;
+				height: 36px;
+			}
+			/*搜索按钮*/
+			.searchBtn {
+			    float: right;
+			    width: 98;
+			    height: 38px;
+			}
+			.searchBtn input{
+				letter-spacing: 1;
+				font-size: 14px;
+				color: #fff;
+			    width: 98;
+			    height: 38px;
+				background: #3385ff;
+				cursor: pointer;
+			}
+
+			.search p {
+				margin-top: 50px;
+				text-align: center;
+				color: #c9c9c9;
+				font-size: 12px;
+			}
+			p a{
+				text-decoration: underline;
+			}
+			/*智能提示列表*/
+			.suggest {
+				width: 540px;
+				border: 1px solid #3385ff;
+			}
+			.suggest ul {
+			    list-style: none;
+			}
+			.suggest ul li {
+				padding: 3px;
+				font-size: 14px;
+				height: 25px;
+				cursor: pointer;
+			}
+			.suggest ul li:hover {
+				text-decoration:  underline;
+				background-color: #e5e5e5;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="search">
+			<div class="search-logo">
+				<img src="https://www.baidu.com/img/bd_logo1.png" width="270px" height="129px" />
+			</div>
+			<div class="searchBar">
+				<form id="searchForm">
+					<div class="searchTxt" id="searchTxt">
+                        <input type="text" id="searchInput">
+				    </div>
+                    <div class="searchBtn">
+                    	<input type="submit" value="百度一下">
+                    </div>
+				</form>
+				
+			</div>
+            <p><a>糯米517吃货节，地道美食5.17元起</a></p>
+            <div class="suggest" id="search-suggest" style="display: none">
+            	<ul>
+            		<li>搜索结果1</li>
+            		<li>搜索结果1</li>
+            		<li>搜索结果1</li>
+            	</ul>
+            </div>
+		</div>
+		<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+		<script type="text/javascript">
+            $('#searchInput').bind('keyup',function() {
+				$('#search-suggest').show().css({
+					top:$('#searchTxt').offset().top + $('#searchTxt').height(),
+                    left:$('#searchTxt').offset().left,
+                    position:'absolute'
+				});
+			})
+			$(document).bind('click',function(){
+				$('#search-suggest').hide();
+			})
+		</script>
+	</body>
+</html>
